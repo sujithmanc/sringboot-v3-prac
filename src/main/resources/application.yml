@@ -1,0 +1,55 @@
+spring:
+  application:
+    name: sb-v3-features
+
+# spring.main.web-application-type=none
+
+### Data Source 1 ###
+
+  db1:
+    datasource:
+      url: jdbc:h2:mem:testdb
+      username: sa
+      password: 
+      driver-class-name: org.h2.Driver
+
+### Data Source 2 ###
+  db2:
+    datasource:
+      url: jdbc:mysql://localhost:3306/deodbs?serverTimezone=UTC
+      username: root
+      password: apple
+      driver-class-name: org.h2.Driver
+
+### JPA Props ###
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: create
+
+      
+employee:
+  name : Sujith
+  age: 27
+  salary: 50000.99
+  pets:
+    - Dog
+    - Cat
+    - Elephant
+  accounts:
+    - acc-no: 101
+      bank-name: SBI
+    - acc-no: 102
+      bank-name: HDFC
+  
+logging:
+  level:
+    root: info
+    com.example.demo: debug
+  pattern:
+    console: '%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n'
+
+  
