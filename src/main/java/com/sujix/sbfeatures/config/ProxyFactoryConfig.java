@@ -14,7 +14,7 @@ public class ProxyFactoryConfig {
 	
 
     @Bean
-    UserClient userProxyClient(@Qualifier("userClinet") WebClient userClient) {
+    UserClient userProxyClient(@Qualifier("userClient") WebClient userClient) {
         return HttpServiceProxyFactory.builderFor(WebClientAdapter.create(userClient)).build().createClient(UserClient.class);
     }
 	

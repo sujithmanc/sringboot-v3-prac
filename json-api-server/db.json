@@ -1,0 +1,61 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Alice Johnson",
+      "username": "alice123",
+      "email": "alice@example.com"
+    },
+    {
+      "id": "2",
+      "name": "Bob Smith",
+      "username": "bob456",
+      "email": "bob@example.com"
+    },
+    {
+      "id": "3",
+      "name": "Charlie Brown",
+      "username": "charlie789",
+      "email": "charlie@example.com"
+    },
+    {
+      "id": "4",
+      "name": "David Lee",
+      "username": "david101",
+      "email": "david@example.com"
+    },
+    {
+      "id": "5",
+      "name": "Emily Davis",
+      "username": "emily202",
+      "email": "emily@example.com"
+    }
+  ],
+  "posts": [
+    {
+      "id": "1",
+      "title": "a title",
+      "views": 100
+    },
+    {
+      "id": "2",
+      "title": "another title",
+      "views": 200
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "text": "a comment about post 1",
+      "postId": "1"
+    },
+    {
+      "id": "2",
+      "text": "another comment about post 1",
+      "postId": "1"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

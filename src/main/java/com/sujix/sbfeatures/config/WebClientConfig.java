@@ -1,6 +1,5 @@
 package com.sujix.sbfeatures.config;
 
-import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import org.springframework.context.annotation.Bean;
@@ -15,10 +14,10 @@ import reactor.netty.http.client.HttpClient;
 @Configuration
 public class WebClientConfig {
 
-	@Bean
-	public WebClient userClient() {
+	@Bean // No need to specify bean name
+	WebClient userClient() {
 		return WebClient.builder().clientConnector(getReactorClientHttpConnector())
-				.baseUrl("https://jsonplaceholder.typicode.com/users").build();
+				.baseUrl("http://localhost:3000/users").build();
 	}
 
 	private ReactorClientHttpConnector getReactorClientHttpConnector() {
@@ -29,4 +28,5 @@ public class WebClientConfig {
 		return HttpClient.newConnection().option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 1_000)
 				.doOnConnected(c -> c.addHandlerLast(new ReadTimeoutHandler(1_000, TimeUnit.MILLISECONDS)));
 	}
+
 }

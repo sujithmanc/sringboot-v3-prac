@@ -16,11 +16,6 @@ import reactor.netty.http.client.HttpClient;
 public class MyWebClientConfig {
 
 	@Bean
-	public WebClient userClinet() {
-		return WebClient.builder().baseUrl("https://jsonplaceholder.typicode.com/users/").build();
-	}
-
-	@Bean
 	public WebClient user2Clinet() {
 		// Builder clientConnector(ClientHttpConnector connector);
 		final int READ_TIME_OUT = 5_000;
