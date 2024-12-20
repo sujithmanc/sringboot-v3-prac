@@ -31,3 +31,4 @@ build/
 
 ### VS Code ###
 .vscode/
+/json-api-server/node_modules
