@@ -2,9 +2,9 @@
   "users": [
     {
       "id": "1",
-      "name": "Alice Johnson",
-      "username": "alice123",
-      "email": "alice@example.com"
+      "name": "Pranisha",
+      "username": "vin",
+      "email": "vin@example.com"
     },
     {
       "id": "2",
@@ -29,6 +29,12 @@
       "name": "Emily Davis",
       "username": "emily202",
       "email": "emily@example.com"
+    },
+    {
+      "id": "7",
+      "name": "Sujith",
+      "username": "vin",
+      "email": "vin@example.com"
     }
   ],
   "posts": [

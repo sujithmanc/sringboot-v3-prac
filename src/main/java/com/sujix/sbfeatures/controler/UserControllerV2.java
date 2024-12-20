@@ -22,12 +22,12 @@ import reactor.core.publisher.Mono;
 
 @Slf4j
 @RestController
-@RequestMapping("/users")
-public class UserController {
+@RequestMapping("/v2/users")
+public class UserControllerV2 {
 
 	@Autowired
 	private WebClient userClient;
-
+	
 	@Autowired
 	private UserClient client;
 
@@ -36,44 +36,32 @@ public class UserController {
 		return userClient.get().retrieve().bodyToFlux(User.class);
 	}
 
-	@GetMapping("/v2")
-	public Mono<Response> getUsersV2() {
-		return userClient.get().uri("/users").retrieve().bodyToFlux(User.class).collectList()
-				.map(users -> new Response(200, Flux.fromIterable(users)))
-				.onErrorResume(error -> Mono.just(new Response(404, Flux.empty())));
-	}
-
-	@GetMapping("/v3")
-	public Flux<User> getUsersV3() {
-		return client.getUsers();
-	}
-
 	@GetMapping("/{id}")
 	public Mono<User> getUsersV4(@PathVariable("id") int id) {
 		log.info("Inside getUsersV4 with id {}", id);
-		return client.getUserById(id).onErrorReturn(new User());
+		return client.getUserById(id).onErrorComplete();
 	}
-
+	
 	@PostMapping
-	public Mono<User> saveUser(@RequestBody User user) {
+	public Mono<User> saveUser( @RequestBody User user) {
 		log.info("Inside saveUser {}", user);
 		return client.saveUser(user);
 	}
-
+	
 	@DeleteMapping("/{id}")
 	public Mono<User> deleteUser(@PathVariable("id") int id) {
 		log.info("Inside deleteUser with id {}", id);
 		return client.deleteUser(id).onErrorReturn(new User());
 	}
-
+	
 	@PutMapping("/{id}")
-	Mono<User> updateUser(@PathVariable("id") int id, @RequestBody User user) {
+	Mono<User> updateUser(@PathVariable("id") int id, @RequestBody User user){
 		log.info("Inside updateUser with id {}, payload {}", id, user);
 		return client.updateUser(id, user);
 	}
-
+	
 	@PatchMapping("/{id}")
-	Mono<User> patchUser(@PathVariable("id") int id, @RequestBody User user) {
+	Mono<User> patchUser(@PathVariable("id") int id, @RequestBody User user){
 		return client.patchUser(id, user);
 	}
 }
